@@ -1,0 +1,51 @@
+algoritmo " Atividade de Organização de Numeros "
+
+
+procedimento exibir_numero()
+inicio
+      para i de 1 ate 5 faca
+        escreva(xnumero[i], " ")
+      fimpara
+fimprocedimento
+
+
+funcao ordenar_numero(): logico
+
+inicio
+      troca <- verdadeiro
+      enquanto troca = verdadeiro faca
+         troca <- falso
+         para i de 1 ate 4 faca
+              se xnumero[i] > xnumero [i+1] entao
+                 aux <- xnumero[i]
+                 xnumero[i] <- xnumero[i+1]
+                 xnumero[i+1] <- aux
+                 troca <- verdadeiro
+              fimse
+         fimpara
+      fimenquanto
+
+      retorne troca
+fimfuncao
+
+var
+   xnumero: vetor[1..5] de inteiro
+   i,aux:inteiro
+   troca, ordenado: logico
+
+inicio
+      xnumero[1] <- 4
+      xnumero[2] <- 2
+      xnumero[3] <- 1
+      xnumero[4] <- 5
+      xnumero[5] <- 3
+
+      escreval("Desordenado: ")
+      exibir_numero() //procedimento
+
+      ordenado <- ordenar_numero() //Função
+
+      escreval("")
+      escreval("Ordem crescente: ")
+      exibir_numero()  // procedimento
+fimalgoritmo
