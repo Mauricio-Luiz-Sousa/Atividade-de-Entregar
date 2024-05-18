@@ -1,0 +1,139 @@
+Algoritmo "SweetFly"
+
+procedimento registrarAvioes()
+var
+   i : inteiro
+
+inicio
+
+      para i de 0 ate 3 faca
+           escreval("Registrar O Numero de Avião : ")
+           leia(avioes[i])
+      fimpara
+fimprocedimento
+
+procedimento registrarAssentos()
+var
+   i : inteiro
+
+inicio
+
+      para i de 0 ate 3 faca
+           escreval("Registrar O Numero de Assentos : ")
+           leia(assentos[i])
+      fimpara
+fimprocedimento
+
+procedimento reservarAviao()
+var
+   i : inteiro
+
+inicio
+
+      escreval("Digite O Numero do Avião : ")
+      leia(numero)
+
+      para i de 0 ate 3 faca
+           se avioes[i] = numero entao
+              escreval("Avião ",numero," Encontrado")
+           fimse
+                se assentos[i] <> 0 entao
+                   escreval("Tem Assento Disponivel")
+                   assentos[i] <- assentos[i] -1
+                   checkin
+                senao
+                     escreval("Não Tem Assento Disponivel")
+                fimse
+      fimpara
+fimprocedimento
+
+procedimento checkin()
+inicio
+
+      escreval("Digite seu Nome Para O Cadastro da Reserva : ")
+      leia(reservas[aux].nome)
+      reservas[aux].numeroAviao <- numero
+      escreval(reservas[aux].nome)
+      escreval(reservas[aux].numeroAviao)
+      aux <- aux +1
+      escreval("Reserva Concluida !")
+fimprocedimento
+
+procedimento consultaAviao()
+var
+   i,numeroAux : inteiro
+
+inicio
+
+      escreval("Digite o Numero do Avião que você Deseja Procurar : ")
+      leia(numeroAux)
+      para i de 0 ate aux -1 faca
+           se reservas[i].numeroAviao = numeroAux entao
+              escreval("Nome do Usuario : ",reservas[i].nome)
+              escreval("Nome do Avião : ",reservas[i].numeroAviao)
+           fimse
+      fimpara
+fimprocedimento
+
+procedimento consultaPassageiro()
+var
+   i : inteiro
+   passageiro : caractere
+
+inicio
+
+      escreval("Digite o Nome do Passageiro que você Deseja Procurar : ")
+      leia(passageiro)
+      para i de 0 ate aux -1 faca
+           se reservas[i].nome = passageiro entao
+              escreval("Nome do Usuario : ",reservas[i].nome)
+              escreval("Nome do Avião : ",reservas[i].numeroAviao)
+           fimse
+      fimpara
+fimprocedimento
+
+tipo reserva = registro
+     nome : caractere
+     numeroAviao : inteiro
+fimregistro
+
+Var
+
+     reservas : vetor [0..19] de reserva
+     avioes : vetor [0..3] de inteiro
+     assentos : vetor [0..3] de inteiro
+     opcao,aux,numero : inteiro
+
+Inicio
+
+aux <- 0
+
+       repita
+             escreval("------------ Menu ------------")
+             escreval("[1] - Registrar Aviões")
+             escreval("[2] - Registrar Assentos")
+             escreval("[3] - Reservar Passagem")
+             escreval("[4] - Consulta Avião")
+             escreval("[5] - Consulta Passageiro")
+             escreval("[6] - Sair do Menu")
+             escreval("Qua Dessa Opção : ")
+             leia(opcao)
+             
+             escolha opcao
+                     caso 1
+                          registrarAvioes()
+                     caso 2
+                          registrarAssentos()
+                     caso 3
+                          reservarAviao()
+                     caso 4
+                          consultaAviao()
+                     caso 5
+                          consultaPassageiro()
+                     caso 6
+                          escreval("Obrigado Por Usar o Menu")
+                          escreval("Fim")
+             fimescolha
+       ate opcao = 6
+
+Fimalgoritmo
